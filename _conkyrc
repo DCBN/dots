@@ -1,0 +1,17 @@
+background        no
+out_to_console 	  yes
+out_to_x	  no
+update_interval	  2
+total_run_times	  0
+short_units	  yes
+pad_percents	  3
+
+override_utf8_locale yes
+
+TEXT
+,[{"full_text": "CPU: $acpitemp°C - $cpu% ","color": "\#746c48"},
+  {"full_text": " RAM: $memperc% ", "color":"\#746c48"},
+  {"full_text": " Battery: $battery_percent% ","color":"\#746c48"},
+  {"full_text": " ${time %H:%M} ", "color":"\#746c48"}
+]
+

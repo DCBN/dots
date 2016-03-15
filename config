@@ -1,0 +1,138 @@
+set $mod Mod4
+
+font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
+gaps inner 15
+gaps outer 5
+new_window pixel 3
+focus_follows_mouse  no
+
+#don't move to neighbouring screen with hjkl
+force_focus_wrapping yes
+
+set $gray1 #191716
+set $gray2 #c8b491
+
+client.focused            $gray1   $gray2   $gray1   $gray1
+client.focused_inactive   $gray2   $gray1   $gray2   $gray2
+client.unfocused          $gray2   $gray1   $gray2   $gray2
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec urxvt
+
+# kill focused window
+bindsym $mod+c kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+p exec "rofi -show run -font 'terminus 11' -fg '#78a090' -bg '#394952' -hlfg '394952' -hlbg '#78a090' -o 85 && exec $exe"
+bindsym $mod+p exec rofi -show run\
+    # -bg "#1a1a1c" -bg-active "#1a1a1c" -bg-urgent "#1a1a1c" -bgalt "#1a1a1c" -bc "#285590" -bw 0 -fg "#8c8c8c" -fg-active "#8c8c8c" -hlbg "#1a1a1c" -hlbg-active "#1a1a1c" -hlbg-urgent "#1a1a1c" -hlfg "#ffffff" -hlfg-active "#ffffff" -hlfg-urgent "#ffffff" -opacity 85 -hide-scrollbar -lines 15 -separator-style none -window -padding 250 -font "Terminus 11"
+# screen lock
+bindsym Control+$mod+l exec ~/script/lock.sh
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+g split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (tabbed, toggle split)
+bindsym $mod+n layout tabbed
+bindsym $mod+m layout toggle split
+
+# container navigation
+bindsym $mod+d focus parent
+bindsym $mod+b focus child
+
+# move container between displays
+bindsym $mod+semicolon move workspace to output right
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to last workspace
+bindsym $mod+6 workspace back_and_forth
+
+# switch to workspace
+bindsym $mod+q workspace brw
+bindsym $mod+w workspace dev
+bindsym $mod+e workspace irc
+bindsym $mod+r workspace msc
+bindsym $mod+t workspace rnd
+bindsym $mod+y workspace y
+bindsym $mod+u workspace u
+bindsym $mod+i workspace i
+bindsym $mod+o workspace o
+
+# move focused container to workspace
+bindsym $mod+Shift+q move container to workspace brw
+bindsym $mod+Shift+w move container to workspace dev
+bindsym $mod+Shift+e move container to workspace irc
+bindsym $mod+Shift+r move container to workspace msc
+bindsym $mod+Shift+t move container to workspace rnd
+bindsym $mod+Shift+y move container to workspace y
+bindsym $mod+Shift+u move container to workspace u
+bindsym $mod+Shift+i move container to workspace i
+bindsym $mod+Shift+o move container to workspace o
+
+bindsym $mod+z reload
+bindsym $mod+Shift+x restart
+bindsym $mod+Shift+z exit
+
+mode "resize" {
+        bindsym h   resize shrink width 10 px or 10 ppt
+        bindsym j   resize grow height 10 px or 10 ppt
+        bindsym k   resize shrink height 10 px or 10 ppt
+        bindsym l   resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or q or ^[
+        bindsym Return mode "default"
+        bindsym q mode "default"
+        bindsym Escape mode "default"
+        bindcode Control+34 mode "default"
+}
+
+bindsym $mod+s mode "resize"
+
+# multimedia keys
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
+bindsym XF86AudioPlay exec "~/.bin/player toggle"
+bindsym XF86AudioStop exec "~/.bin/player stop"
+bindsym XF86AudioNext exec "~/.bin/player next"
+bindsym XF86AudioPrev exec "~/.bin/player previous"
+
+bindsym XF86KbdBrightnessDown exec "sudo /opt/kbdlight/bin/kbdlight -"
+bindsym XF86KbdBrightnessUp exec "sudo /opt/kbdlight/bin/kbdlight +"
+bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
+
+bindsym XF86Display exec "arandr"
+
+bindsym $mod+a exec "urxvt -e alsamixer"
+bindsym $mod+Shift+a exec "pavucontrol"
+
+exec feh --bg-scale ~/Pictures/wallpaper/ramenshop.jpg
+exec --no-startup-id ~/.i3/lemonbar

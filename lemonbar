@@ -1,0 +1,72 @@
+#!/bin/bash
+
+ # Color directory
+CD="$HOME/.Xresources"
+
+# Fetch the Colors
+BG=$(cat ${CD} | grep -i background | tail -c 8)
+FG=$(cat ${CD} | grep -i foreground | tail -c 8)
+
+BLACK=$(cat ${CD} | grep -i color8 | tail -c 8)
+RED=$(cat ${CD} | grep -i color9 | tail -c 8)
+GREEN=$(cat ${CD} | grep -i color10 | tail -c 8)
+YELLOW=$(cat ${CD} | grep -i color11 | tail -c 8)
+BLUE=$(cat ${CD} | grep -i color12 | tail -c 8)
+MAGENTA=$(cat ${CD} | grep -i color13 | tail -c 8)
+CYAN=$(cat ${CD} | grep -i color14 | tail -c 8)
+WHITE=$(cat ${CD} | grep -i color15 | tail -c 8)
+COLOR=${FG}
+# Fonts
+FONT="-*-tewi-medium-*-*-*-11-*-*-*-*-*-*"
+
+
+
+# Panel
+PW=215
+PH=22
+PX=575
+PY=15
+
+
+#Actions
+VOLT="amixer sset Master toggle"
+VOLU="amixer sset Master 2%+"
+VOLD="amixer sset Master 2%-"
+# Functions
+
+#Workspace number
+ws(){
+while read -r line; do
+    if [[ "$line" == *'true'* ]]; then
+      		output="${output}%{F$RED}"
+    	elif [[ "$line" == *'false'* ]]; then
+      		output="${output}%{F$GREEN}"
+    	fi
+    		num=$(echo "${line/\]/}" | cut -d , -f 2)
+    		output="${output}%{A:i3-msg workspace ${num}:}[${num}]%{A}"
+  	done <<< "$(i3-msg -t get_workspaces | jq -S -M -c -r '.[] | [.focused, .name]')"
+  	output="${output}%{F#888888}"
+  	echo "%{F$COLOR}${output}"
+}
+
+ clock(){
+  	clock=$(date "+%d %b %Y  %H:%M")
+	echo "%{F$COLOR}${clock}"
+}
+vol(){
+	vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+	echo "%{F$COLOR}% ${vol}"
+}
+
+pow(){
+	# echo "%{F$YELLOW}${pow}"
+	BATPERC=$(acpi --battery | cut -d, -f2)
+        echo "%{F$COLOR}${BATPERC}"
+}
+
+while true
+ 	do
+	 	echo "   $(clock) | Bat: $(pow)"
+	 	sleep 2
+	done | lemonbar -g ${PW}x${PH}+${PX}+${PY}  -f "$FONT" -f "$FONT"  -B "$BG" -F "$FG" -p -d
+
