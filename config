@@ -12,9 +12,9 @@ force_focus_wrapping yes
 set $gray1 #191716
 set $gray2 #c8b491
 
-client.focused            $gray1   $gray2   $gray1   $gray1
-client.focused_inactive   $gray2   $gray1   $gray2   $gray2
-client.unfocused          $gray2   $gray1   $gray2   $gray2
+client.focused            $gray1   $gray1   $gray1   $gray1
+client.focused_inactive   $gray2   $gray2   $gray2   $gray2
+client.unfocused          $gray2   $gray2   $gray2   $gray2
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
