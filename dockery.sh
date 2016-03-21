@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/env bash
 
 function both() {
     [ -e ~/.fehbg ] && source ~/.fehbg

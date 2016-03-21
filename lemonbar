@@ -1,72 +1,71 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
- # Color directory
-CD="$HOME/.Xresources"
+declare black red green yellow blue maganta cyan white fg bg color font pw ph px py
 
 # Fetch the Colors
-BG=$(cat ${CD} | grep -i background | tail -c 8)
-FG=$(cat ${CD} | grep -i foreground | tail -c 8)
-
-BLACK=$(cat ${CD} | grep -i color8 | tail -c 8)
-RED=$(cat ${CD} | grep -i color9 | tail -c 8)
-GREEN=$(cat ${CD} | grep -i color10 | tail -c 8)
-YELLOW=$(cat ${CD} | grep -i color11 | tail -c 8)
-BLUE=$(cat ${CD} | grep -i color12 | tail -c 8)
-MAGENTA=$(cat ${CD} | grep -i color13 | tail -c 8)
-CYAN=$(cat ${CD} | grep -i color14 | tail -c 8)
-WHITE=$(cat ${CD} | grep -i color15 | tail -c 8)
-COLOR=${FG}
+read -r black red green yellow blue magenta cyan white bg fg < <(
+	gawk -F':' '
+	/color8/    {black=$2}
+	/color9/    {red=$2}
+	/color10/   {green=$2}
+	/color11/   {yellow=$2}
+	/color12/   {blue=$2}
+	/color13/   {magenta=$2}
+	/color14/   {cyan=$2}
+	/color15/   {white=$2}
+	/background/{bg=$2}
+	/foreground/{fg=$2}
+	END { print black, red, green, yellow, blue, magenta, cyan, white, bg, fg }' "$HOME/.Xresources"
+)
+color="$fg"
 # Fonts
-FONT="-*-tewi-medium-*-*-*-11-*-*-*-*-*-*"
-
-
+font='-*-tewi-medium-*-*-*-11-*-*-*-*-*-*'
 
 # Panel
-PW=215
-PH=22
-PX=575
-PY=15
-
+pw=215
+ph=22
+px=575
+py=15
 
 #Actions
-VOLT="amixer sset Master toggle"
-VOLU="amixer sset Master 2%+"
-VOLD="amixer sset Master 2%-"
+# VOLT="amixer sset Master toggle"
+# VOLU="amixer sset Master 2%+"
+# VOLD="amixer sset Master 2%-"
 # Functions
 
 #Workspace number
-ws(){
-while read -r line; do
-    if [[ "$line" == *'true'* ]]; then
-      		output="${output}%{F$RED}"
-    	elif [[ "$line" == *'false'* ]]; then
-      		output="${output}%{F$GREEN}"
-    	fi
-    		num=$(echo "${line/\]/}" | cut -d , -f 2)
-    		output="${output}%{A:i3-msg workspace ${num}:}[${num}]%{A}"
-  	done <<< "$(i3-msg -t get_workspaces | jq -S -M -c -r '.[] | [.focused, .name]')"
-  	output="${output}%{F#888888}"
-  	echo "%{F$COLOR}${output}"
+ws() {
+	local line
+	while read -r line; do
+		if [[ "$line" == *'true'* ]]; then
+			output="${output}%{F$red}"
+		elif [[ "$line" == *'false'* ]]; then
+			output="${output}%{F$green}"
+		fi
+		num=$(echo "${line/\]/}" | cut -d , -f 2) # FIXME
+		output="${output}%{A:i3-msg workspace ${num}:}[${num}]%{A}"
+	done <<< "$(i3-msg -t get_workspaces | jq -S -M -c -r '.[] | [.focused, .name]')"
+	output="${output}%{F#888888}"
+	echo "%{F$color}${output}"
 }
 
- clock(){
-  	clock=$(date "+%d %b %Y  %H:%M")
-	echo "%{F$COLOR}${clock}"
+clock() {
+	clock=$(date "+%d %b %Y  %H:%M")
+	echo "%{F$color}${clock}"
 }
-vol(){
+
+vol() {
 	vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
-	echo "%{F$COLOR}% ${vol}"
+	echo "%{F$color}% ${vol}"
 }
 
-pow(){
+pow() {
 	# echo "%{F$YELLOW}${pow}"
-	BATPERC=$(acpi --battery | cut -d, -f2)
-        echo "%{F$COLOR}${BATPERC}"
+	echo "%{F$color}$(acpi --battery | cut -d, -f2)"
 }
 
-while true
- 	do
-	 	echo "   $(clock) | Bat: $(pow)"
-	 	sleep 2
-	done | lemonbar -g ${PW}x${PH}+${PX}+${PY}  -f "$FONT" -f "$FONT"  -B "$BG" -F "$FG" -p -d
+while true; do
+	echo "   $(clock) | Bat: $(pow)"
+	sleep 2
+done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d
 
