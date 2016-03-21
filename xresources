@@ -1,6 +1,64 @@
 ! vim: set filetype=xdefaults :
 
 URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
+! special
+*.foreground:   #daba8b
+*.background:   #191716
+*.cursorColor:  #daba8b
+
+! black
+*.color0:       #0f0e0d
+*.color8:       #383332
+
+! red
+*.color1:       #845336
+*.color9:       #8c4f4a
+
+! green
+*.color2:       #57553c
+*.color10:      #898471
+
+! yellow
+*.color3:       #a17e3e
+*.color11:      #c8b491
+
+! blue
+*.color4:       #43454f
+*.color12:      #65788f
+
+! magenta
+*.color5:       #604848
+*.color13:      #755e4a
+
+! cyan
+*.color6:       #5c6652
+*.color14:      #718062
+
+! white
+*.color7:       #a18b62
+*.color15:      #bc9d66
+
+! ROFI COLORS
+rofi.bg:                #191716
+rofi.bg-active:         #191716
+rofi.bg-urgent:         #191716
+rofi.bgalt:             #191716
+rofi.bc:                #bc9d66
+rofi.bw:                0
+rofi.fg:                #bc9d66
+rofi.fg-active:         #bc9d66
+rofi.hlbg:              #191716
+rofi.hlbg-active:       #191716
+rofi.hlbg-urgent:       #191716
+rofi.hlfg:              #ffffff
+rofi.hlfg-active:       #ffffff
+rofi.hlfg-urgent:       #ffffff
+rofi.hide-scrollbar:    true
+rofi.lines:             15
+rofi.separator-style:   none
+rofi.fullscreen:        false
+rofi.padding:           25
+rofi.font:              Terminus 11
 
 URxvt.keysym.M-x           : perl:keyboard-select:activate
 URxvt.keysym.M-u           : perl:url-select:select_next
@@ -11,13 +69,12 @@ URxvt.keysym.M-C-v         : perl:clipboard:paste_escaped
 URxvt.url-select.launcher  : firefox
 URxvt.url-select.autocopy  : true
 URxvt.url-select.underline : true
-
+URxvt.internalBorder:  15
 ! https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-equal:     perl:font-size:increase
 URxvt.keysym.C-minus:   perl:font-size:decrease
 
-
-URxvt.font        : xft:Terminus:pixelsize=10
+URxvt.font        : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
 
@@ -35,7 +92,17 @@ Xft.antialias : true
 Xft.rgba      : rgb
 
 !Fading
-URxvt.fading    : 50
-URxvt.fadeColor : #29303a
+URxvt.fading    : 25
+URxvt.fadeColor : #0e0e0e
+! URxvt.letterSpace: -1
+! include "dark.xresources"
+URxvt*modifier: alt
+URxvt.depth: 32
 
-#include "dark.xresources"
+rofi.sidebar-mode: true
+rofi.seperator-style: true
+rofi.hide-sidebar: true
+rofi.kb-mode-next: Alt+l
+rofi.kb-mode-previous: Alt+h
+rofi.kb-row-up: Alt+k
+rofi.kb-row-down: Alt+j
