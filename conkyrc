@@ -7,6 +7,7 @@ wn_window_argb_visual true
 own_window_argb_value 0
 own_window_type panel
 own_window yes
+own_conky_class conky
 own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 short_units yes

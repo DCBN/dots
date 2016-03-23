@@ -92,8 +92,8 @@ Xft.antialias : true
 Xft.rgba      : rgb
 
 !Fading
-URxvt.fading    : 25
-URxvt.fadeColor : #0e0e0e
+URxvt.fading    : 15
+URxvt.fadeColor : #845336
 ! URxvt.letterSpace: -1
 ! include "dark.xresources"
 URxvt*modifier: alt

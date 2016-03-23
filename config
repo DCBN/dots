@@ -3,7 +3,7 @@ set $mod Mod4
 font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 gaps inner 15
 gaps outer 5
-new_window pixel 3
+new_window pixel 0
 focus_follows_mouse  no
 
 #don't move to neighbouring screen with hjkl
@@ -134,5 +134,6 @@ bindsym XF86Display exec "arandr"
 bindsym $mod+a exec "urxvt -e alsamixer"
 bindsym $mod+Shift+a exec "pavucontrol"
 
-exec feh --bg-scale ~/Pictures/wallpaper/ramenshop.jpg
+exec feh --bg-scale ~/Pictures/wallpaper/whitebg/shop.png
+exec --no-startup-id conky -c ~/.i3/conkyrc
 exec --no-startup-id ~/.i3/lemonbar
