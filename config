@@ -134,6 +134,6 @@ bindsym XF86Display exec "arandr"
 bindsym $mod+a exec "urxvt -e alsamixer"
 bindsym $mod+Shift+a exec "pavucontrol"
 
-exec feh --bg-scale ~/Pictures/wallpaper/whitebg/shop.png
-exec --no-startup-id conky -c ~/.i3/conkyrc
+exec feh --bg-scale ~/Pictures/keep.jpg
+exec --no-startup-id conky -c ~/.i3/conkyrc &
 exec --no-startup-id ~/.i3/lemonbar
