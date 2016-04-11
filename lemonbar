@@ -22,9 +22,9 @@ color="$fg"
 font='-*-tewi-medium-*-*-*-11-*-*-*-*-*-*'
 
 # Panel
-pw=215
+pw=285
 ph=22
-px=575
+px=530
 py=15
 
 #Actions
@@ -63,9 +63,11 @@ pow() {
 	# echo "%{F$YELLOW}${pow}"
 	echo "%{F$color}$(acpi --battery | cut -d, -f2)"
 }
-
+todo(){
+  python2 ~/script/t/t.py --task-dir ~/tasks --list tasks | wc -l
+}
 while true; do
-	echo "   $(clock) | Bat: $(pow)"
+  echo "   $(clock) | Todo: $(todo) | Bat: $(pow)"
 	sleep 2
 done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d
 

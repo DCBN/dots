@@ -24,7 +24,7 @@ URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
 
 ! blue
 *.color4:       #43454f
-*.color12:      #65788f
+*.color12:      #525d69
 
 ! magenta
 *.color5:       #604848
@@ -37,6 +37,9 @@ URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
 ! white
 *.color7:       #a18b62
 *.color15:      #bc9d66
+
+
+
 
 ! ROFI COLORS
 rofi.bg:                #191716
@@ -92,8 +95,8 @@ Xft.antialias : true
 Xft.rgba      : rgb
 
 !Fading
-URxvt.fading    : 15
-URxvt.fadeColor : #845336
+URxvt.fading    : 10
+URxvt.fadeColor : #383332
 ! URxvt.letterSpace: -1
 ! include "dark.xresources"
 URxvt*modifier: alt
