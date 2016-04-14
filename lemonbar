@@ -21,10 +21,12 @@ color="$fg"
 # Fonts
 font='-*-tewi-medium-*-*-*-11-*-*-*-*-*-*'
 
+font='-*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1'
 # Panel
-pw=285
+pw=230
 ph=22
-px=530
+px=569
+#px=817
 py=15
 
 #Actions

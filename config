@@ -3,14 +3,14 @@ set $mod Mod4
 font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 gaps inner 15
 gaps outer 5
-new_window pixel 4
+new_window pixel 2
 focus_follows_mouse  no
 
 #don't move to neighbouring screen with hjkl
 force_focus_wrapping yes
 
 set $gray1 #252525
-set $gray2 #755e4a
+set $gray2 #845336
 
 client.focused            $gray1   $gray2   $gray1   $gray2
 client.focused_inactive   $gray2   $gray1   $gray2   $gray1
@@ -135,6 +135,4 @@ bindsym XF86Display exec "arandr"
 bindsym $mod+a exec "urxvt -e alsamixer"
 bindsym $mod+Shift+a exec "pavucontrol"
 
-exec feh --bg-scale ~/Pictures/keep.jpg
-exec --no-startup-id conky -c ~/.i3/conkyrc &
-exec --no-startup-id ~/.i3/lemonbar
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/pretty.jpg

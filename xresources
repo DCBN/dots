@@ -7,7 +7,7 @@ URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
 *.cursorColor:  #daba8b
 
 ! black
-*.color0:       #0f0e0d
+*.color0:       #191716
 *.color8:       #383332
 
 ! red
@@ -40,7 +40,7 @@ URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
 
 
 
-
+URxvt.boldFont:
 ! ROFI COLORS
 rofi.bg:                #191716
 rofi.bg-active:         #191716
@@ -77,7 +77,8 @@ URxvt.internalBorder:  15
 URxvt.keysym.C-equal:     perl:font-size:increase
 URxvt.keysym.C-minus:   perl:font-size:decrease
 
-URxvt.font        : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
+! URxvt.font        : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
+ URxvt.font        : -*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1
 URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
 
