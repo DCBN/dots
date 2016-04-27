@@ -31,7 +31,7 @@ bindsym $mod+c kill
 bindsym $mod+p exec rofi -show run\
     # -bg "#1a1a1c" -bg-active "#1a1a1c" -bg-urgent "#1a1a1c" -bgalt "#1a1a1c" -bc "#285590" -bw 0 -fg "#8c8c8c" -fg-active "#8c8c8c" -hlbg "#1a1a1c" -hlbg-active "#1a1a1c" -hlbg-urgent "#1a1a1c" -hlfg "#ffffff" -hlfg-active "#ffffff" -hlfg-urgent "#ffffff" -opacity 85 -hide-scrollbar -lines 15 -separator-style none -window -padding 250 -font "Terminus 11"
 # screen lock
-bindsym Control+$mod+l exec ~/script/lock.sh
+bindsym Control+$mod+l exec ~/script/snippets/locks.sh
 
 # change focus
 bindsym $mod+h focus left
