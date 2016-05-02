@@ -19,7 +19,7 @@ read -r black red green yellow blue magenta cyan white bg fg < <(
 )
 color="$fg"
 # Fonts
-font='-*-tewi-medium-*-*-*-11-*-*-*-*-*-*'
+#font='-*-tewi-medium-*-*-*-11-*-*-*-*-*-*'
 
 font='-*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1'
 # Panel
