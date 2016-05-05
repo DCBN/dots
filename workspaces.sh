@@ -24,10 +24,9 @@ color="$fg"
 echo $width
 font='-*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1'
 # Panel
-pw=230
+pw=50
 ph=22
-half=$(($(xrandr | grep '*' | cut -dx -f1) - pw))
-px=$((half / 2))
+px=20
 py=15
 
 #Actions
@@ -39,7 +38,7 @@ py=15
 
 
 #Workspace number
-ws() {
+ws2() {
 	local line
 	while read -r line; do
 		if [[ "$line" == *'true'* ]]; then
@@ -47,32 +46,21 @@ ws() {
 		elif [[ "$line" == *'false'* ]]; then
 			output="${output}%{F$green}"
 		fi
-		num=$(echo "${line/\]/}" | cut -d , -f 2) # FIXME
-		output="${output}%{A:i3-msg workspace ${num}:}[${num}]%{A}"
-	done <<< "$(i3-msg -t get_workspaces | jq -S -M -c -r '.[] | [.focused, .name]')"
+		num=$(echo "${line/\]/}" | cut -d , -f 2 )  # FIXME
+		output="${output}%{A:i3-msg workspace ${num}:} ${num}%{A} "
+	done <<< "  $(i3-msg -t get_workspaces | jq -S -M -c -r '.[] | [.focused, .name]' | sed 's/\"//;s/\"//')"
 	output="${output}%{F#888888}"
-	echo "%{F$color}${output}"
+	echo "%{F$color}${output}" | sed 's/\[//;s/\]//'
 }
-
-clock() {
-	clock=$(date "+%d %b %Y  %H:%M")
-	echo "%{F$color}${clock}"
-}
-
-vol() {
-	vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
-	echo "%{F$color}% ${vol}"
-}
-
-pow() {
-	# echo "%{F$YELLOW}${pow}"
-	echo "%{F$color}$(acpi --battery | cut -d, -f2)"
+ ws(){
+	ws=$(i3-msg -t get_outputs | sed 's/.*"current_workspace":"\([^"]*\)".*/\1/')
+	echo "%{F$color}${ws}"
 }
 todo(){
   python2 ~/script/t/t.py --task-dir ~/tasks --list tasks | wc -l
 }
 while true; do
-  echo "   $(clock) | Todo: $(todo) | Bat: $(pow)"
-	sleep 2
+  echo "   $(ws)"
+  sleep 0.5
 done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d
 

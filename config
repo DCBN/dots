@@ -27,7 +27,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+p exec "rofi -show run -font 'terminus 11' -fg '#78a090' -bg '#394952' -hlfg '394952' -hlbg '#78a090' -o 85 && exec $exe"
+# bindsym $mod+p exec "rofi -show run -font '-*-lemon-medium-r-*-*-*-*-*-*-*-*-*-uso106446-1' -fg '#78a090' -bg '#394952' -hlfg '394952' -hlbg '#78a090' -o 85 && exec $exe"
 bindsym $mod+p exec rofi -show run\
     # -bg "#1a1a1c" -bg-active "#1a1a1c" -bg-urgent "#1a1a1c" -bgalt "#1a1a1c" -bc "#285590" -bw 0 -fg "#8c8c8c" -fg-active "#8c8c8c" -hlbg "#1a1a1c" -hlbg-active "#1a1a1c" -hlbg-urgent "#1a1a1c" -hlfg "#ffffff" -hlfg-active "#ffffff" -hlfg-urgent "#ffffff" -opacity 85 -hide-scrollbar -lines 15 -separator-style none -window -padding 250 -font "Terminus 11"
 # screen lock
