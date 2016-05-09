@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-declare black red green yellow blue maganta cyan white fg bg color font pw ph px py width
+declare black red green yellow blue maganta cyan white fg bg color font pw ph px py width path
 
+#path=".light-xresources"
+path=".Xresources"
 # Fetch the Colors
 read -r black red green yellow blue magenta cyan white bg fg < <(
 	gawk -F':' '
@@ -15,7 +17,7 @@ read -r black red green yellow blue magenta cyan white bg fg < <(
 	/color15/   {white=$2}
 	/background/{bg=$2}
 	/foreground/{fg=$2}
-	END { print black, red, green, yellow, blue, magenta, cyan, white, bg, fg }' "$HOME/.Xresources"
+END { print black, red, green, yellow, blue, magenta, cyan, white, bg, fg }' "$HOME/$path"
 )
 color="$fg"
 # Fonts

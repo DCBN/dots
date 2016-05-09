@@ -11,6 +11,8 @@ force_focus_wrapping yes
 
 set $gray1 #252525
 set $gray2 #845336
+# set $gray2 #4ec2e8
+# set $gray1 #f3f3f3
 
 client.focused            $gray1   $gray2   $gray1   $gray2
 client.focused_inactive   $gray2   $gray1   $gray2   $gray1
