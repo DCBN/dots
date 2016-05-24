@@ -65,4 +65,3 @@ while true; do
   echo "   $(ws)"
   sleep 0.5
 done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d
-

@@ -76,5 +76,4 @@ todo(){
 while true; do
   echo "   $(clock) | Todo: $(todo) | Bat: $(pow)"
 	sleep 2
-done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d
-
+done | lemonbar -g "${pw}x${ph}+${px}+${py}" -f "$font" -B "$bg" -F "$fg" -p -d &

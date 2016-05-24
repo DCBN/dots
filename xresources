@@ -76,7 +76,7 @@ URxvt.internalBorder:  15
 ! https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-equal:     perl:font-size:increase
 URxvt.keysym.C-minus:   perl:font-size:decrease
-
+!URxvt.font        : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 URxvt.font        : -*-lemon-medium-r-*-*-*-*-*-*-m-*-iso10646-1
 URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
@@ -95,7 +95,7 @@ Xft.antialias : true
 Xft.rgba      : rgb
 
 !Fading
-URxvt.fading    : 10
+URxvt.fading    : 0
 URxvt.fadeColor : #383332
 ! URxvt.letterSpace: -1
 ! include "dark.xresources"
@@ -109,3 +109,5 @@ rofi.kb-mode-next: Alt+l
 rofi.kb-mode-previous: Alt+h
 rofi.kb-row-up: Alt+k
 rofi.kb-row-down: Alt+j
+
+!#include ".light-xresources"

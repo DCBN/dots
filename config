@@ -1,23 +1,23 @@
-set $mod Mod4
+Set $mod Mod4
 
 font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 gaps inner 15
 gaps outer 5
-new_window pixel 2
+new_window pixel 10
 focus_follows_mouse  no
 
 #don't move to neighbouring screen with hjkl
 force_focus_wrapping yes
 
 set $gray1 #252525
-set $gray2 #845336
-# set $gray2 #4ec2e8
-# set $gray1 #f3f3f3
+set $gray2 #8c4f4a
+#set $gray2 #4ec2e8
+#set $gray1 #fec7cd
 
 client.focused            $gray1   $gray2   $gray1   $gray2
 client.focused_inactive   $gray2   $gray1   $gray2   $gray1
 client.unfocused          $gray2   $gray1   $gray2   $gray1
-
+client.urgent             $gray1    $gray2  $gray1    $gray2
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -136,5 +136,6 @@ bindsym XF86Display exec "arandr"
 
 bindsym $mod+a exec "urxvt -e alsamixer"
 bindsym $mod+Shift+a exec "pavucontrol"
+
 
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/pretty.jpg
