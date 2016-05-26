@@ -1,0 +1,35 @@
+[admiral]
+items = ["left", "workspaces",
+          "center", "title",
+          "right", "todo", "clock", "battery"]
+
+[title]
+path = "title.sh"
+
+[clock]
+path = "clock.sh"
+reload = 1
+
+[workspaces]
+path = "workspace.sh"
+reload =0.5
+
+[todo]
+path = "todo.sh"
+reload = 60
+
+[battery]
+path = "battery.sh"
+reload = 60
+
+[left]
+path = ["/usr/bin/echo", "%{l}"]
+static = true
+
+[center]
+path = ["/usr/bin/echo", "%{c}"]
+static = true
+
+[right]
+path = ["/usr/bin/echo", "%{r}"]
+static = true
