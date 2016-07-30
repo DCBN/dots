@@ -1,4 +1,2 @@
 # dots
-![img](http://asator.xyz/src/hipstershit.png)
----
-![img2](http://asator.xyz/src/colors.png)
+![img](http://asator.xyz/img/1441.png)
