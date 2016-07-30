@@ -1,19 +1,30 @@
 [admiral]
-items = ["left", "workspaces",
-         "center", "title",
-         "right", "clock"]
-
-[workspaces]
-path = "./bspwm_workspaces.sh"
+items = ["left", "workspaces_2bwm",
+          "center", "title",
+          "right", "todo", "clock", "battery"]
 
 [title]
-path = "xtitle -s -t 100"
+path = "./title.sh"
 
 [clock]
-path = "date '+%-I:%M%p  '"
+path = "./clock.sh"
 reload = 1
 
-# Used for formatting lemonbar
+[workspaces]
+path = "./workspace.sh"
+reload =0.5
+
+[workspaces_2bwm]
+path = "./workspace_2bwm.sh"
+
+[todo]
+path = "./todo.sh"
+reload = 6
+
+[battery]
+path = "./battery.sh"
+reload = 10
+
 [left]
 path = "echo '%{l}'"
 static = true
@@ -25,3 +36,7 @@ static = true
 [right]
 path = "echo '%{r}'"
 static = true
+
+[volume]
+path = "./volume.sh"
+reload = 15

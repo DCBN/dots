@@ -2,11 +2,11 @@
 # skr0tm at protonmail dot com
 
 # set text color
-set red "#8c4f4a"
-set blue "#525d69"
-set green "#57553c"
-set yellow "#a17e3e"
-set color "#daba8b"
+set red "#c2454e"
+set blue "#065f73"
+set green "#7cbf9e"
+set yellow "#ef5847"
+set color "#e8dfd6"
 # get current number of open tasks
 set tasks (python2 $HOME/script/t/t2.py --task-dir $HOME/tasks --list tasks | wc -l)
 
@@ -21,4 +21,4 @@ else if test $tasks -le 10
   set color $red
 end
 
-echo " %{F$color}$tasks "
+echo " %{F$color}$tasks %{F$yellow}|"

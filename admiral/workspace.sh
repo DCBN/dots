@@ -2,8 +2,8 @@
 
 declare black red green yellow blue maganta cyan white fg bg color font pw ph px py width path
 
-#path=".light-xresources"
-path=".Xresources"
+path=".light-xresources"
+#path=".Xresources"
 # Fetch the Colors
 read -r black red green yellow blue magenta cyan white bg fg < <(
 	gawk -F':' '
@@ -37,5 +37,5 @@ ws2() {
 	echo "%{F$color}${output}" | sed 's/\[//;s/\]//'
 }
 
-echo " %{l}$(ws2)"
+echo " $(ws2)"
 

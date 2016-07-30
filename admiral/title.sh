@@ -1,12 +1,12 @@
 #!/usr/bin/env fish
 
-set red "#8c4f4a"
+set red "#acc5cc"
 xtitle -s | while read window
 set wp (mpc current)
 	if test -z $wp
-		echo "%{c}%{F$red}$window"
+		echo "%{F$red}$window"| sed 's/fish //'
 	else
-		echo "%{c}%{F$red}$wp"
+		echo "%{F$red}$wp"
   end
 end
 
