@@ -4,7 +4,6 @@ set red "#c2454e"
 set blue "#2e3340"
 
 xprop -spy -root -notype  _NET_CURRENT_DESKTOP | while read space
-  set s (echo $space | cut -d= -f2)
   switch (echo $space | cut -d= -f2)
     case ' 0'
       echo "  %{F$red}1 %{F$blue}2 3 4 5 6"
