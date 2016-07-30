@@ -3,16 +3,16 @@ Set $mod Mod4
 font -*-tewi-medium-*-*-*-11-*-*-*-*-*-*
 gaps inner 15
 gaps outer 5
-new_window pixel 10
+new_window pixel 5
 focus_follows_mouse  no
 
 #don't move to neighbouring screen with hjkl
 force_focus_wrapping yes
 
-set $gray1 #252525
-set $gray2 #8c4f4a
-#set $gray2 #4ec2e8
-#set $gray1 #fec7cd
+#set $gray1 #252525
+#set $gray2 #8c4f4a
+set $gray2 #e8dfd6
+set $gray1 #021b21
 
 client.focused            $gray1   $gray2   $gray1   $gray2
 client.focused_inactive   $gray2   $gray1   $gray2   $gray1
@@ -123,10 +123,10 @@ bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
 
-bindsym XF86AudioPlay exec "~/.bin/player toggle"
-bindsym XF86AudioStop exec "~/.bin/player stop"
-bindsym XF86AudioNext exec "~/.bin/player next"
-bindsym XF86AudioPrev exec "~/.bin/player previous"
+bindsym XF86AudioPlay exec "mpc toggle"
+bindsym XF86AudioStop exec "mpc stop"
+bindsym XF86AudioNext exec "mpc next"
+bindsym XF86AudioPrev exec "mpc prev"
 
 bindsym XF86KbdBrightnessDown exec "sudo /opt/kbdlight/bin/kbdlight -"
 bindsym XF86KbdBrightnessUp exec "sudo /opt/kbdlight/bin/kbdlight +"
@@ -138,4 +138,5 @@ bindsym $mod+a exec "urxvt -e alsamixer"
 bindsym $mod+Shift+a exec "pavucontrol"
 
 
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/pretty.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/eyes.jpg
+
